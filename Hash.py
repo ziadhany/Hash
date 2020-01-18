@@ -3,15 +3,15 @@
 import hashlib
 from appJar import gui
 def MD5(text):
-    return str(hashlib.md5(text).hexdigest())
+    return str(hashlib.md5(text.encode()).hexdigest())
 def SHA512(text):
-    return str(hashlib.sha512(text).hexdigest())
+    return str(hashlib.sha512(text.encode()).hexdigest())
 def SHA256(text):
-    return str(hashlib.sha256(text).hexdigest())
+    return str(hashlib.sha256(text.encode()).hexdigest())
 def SHA384(text):
-    return str(hashlib.sha384(text).hexdigest())
+    return str(hashlib.sha384(text.encode()).hexdigest())
 def SHA1(text):
-    return str(hashlib.sha1(text).hexdigest())
+    return str(hashlib.sha1(text.encode()).hexdigest())
 
 
 def Hash_MD5(btn):
