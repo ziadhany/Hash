@@ -39,7 +39,7 @@ jobs:
           sleep 5
           
           # Take a screenshot (you can adjust the filename and screen number as needed)
-          scrot /tmp/screenshot.png
+          # scrot /tmp/screenshot.png
 
     - name: Upload screenshot to GitHub Artifacts
       uses: actions/upload-artifact@v3
