@@ -33,6 +33,7 @@ jobs:
     - name: Run Tkinter and take a screenshot
       run: |
           # Start virtual display
+          export DISPLAY=:99
           xvfb-run -a python main.py &
           
           sleep 5
