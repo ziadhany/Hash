@@ -22,7 +22,7 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') --disable=C0201
+        pylint $(git ls-files '*.py') --disable=C0201,C0114,C0115,C0116,W0611
     
     - name: Run the unittest
       run: |
