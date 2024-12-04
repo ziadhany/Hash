@@ -30,20 +30,29 @@ jobs:
       run: |
         xvfb-run -a python test.py
         
-    # Step 3: Start Xvfb and run the Python script
-    - name: Start virtual display and run script
+    # Step 3: Clean up any stale X server lock files
+    - name: Clean up old lock files
       run: |
+        rm -f /tmp/.X99-lock
+
+    # Step 4: Kill any existing Xvfb process and start a new one
+    - name: Kill existing Xvfb process and start a new one
+      run: |
+        pkill Xvfb || true  # Ignore if Xvfb is not running
         export DISPLAY=:99
-        # Start the X virtual framebuffer in the background
         Xvfb :99 -screen 0 1280x1024x24 &
+        sleep 5  # Give some time for the Xvfb server to start
 
-        # Allow some time for the virtual display to be set up
-        sleep 5
+    # Step 5: Run the Python script that uses Tkinter or another GUI library
+    - name: Run Python GUI script
+      run: |
+        export DISPLAY=:99  # Ensure the correct display is set
+        python main.py  # Your GUI script that uses Tkinter or another GUI library
 
-        # Run your Python script (ensure it doesn't require interaction)
-        python main.py
-
-        # Now take a screenshot using scrot
+    # Step 6: Take a screenshot using scrot
+    - name: Take a screenshot
+      run: |
+        export DISPLAY=:99  # Ensure scrot is using the correct display
         scrot /tmp/screenshot.png
 
     - name: Upload screenshot to GitHub Artifacts
