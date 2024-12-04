@@ -48,6 +48,7 @@ jobs:
       run: |
         export DISPLAY=:99  # Ensure the correct display is set
         python main.py  & # Your GUI script that uses Tkinter or another GUI library
+        sleep 5  # Adjust this duration if necessary for your GUI to load
         scrot /tmp/screenshot.png
         
         # Kill the Python process after taking the screenshot
