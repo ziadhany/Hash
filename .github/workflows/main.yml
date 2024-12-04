@@ -28,7 +28,7 @@ jobs:
     
     - name: Run the unittest
       run: |
-        python test.py
+        xvfb-run -a python test.py
         
     - name: Run Tkinter and take a screenshot
       run: |
